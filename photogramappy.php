@@ -43,6 +43,7 @@ define( 'PGM_INC',     PGM_PATH . 'includes/' );
 
 // Include files
 require_once PGM_INC . 'functions/core.php';
+require_once PGM_INC . 'class-custom-post-types.php';
 
 
 // Activation/Deactivation
@@ -50,4 +51,4 @@ register_activation_hook( __FILE__, '\TenUp\Photogramappy\Core\activate' );
 register_deactivation_hook( __FILE__, '\TenUp\Photogramappy\Core\deactivate' );
 
 // Bootstrap
-TenUp\Photogramappy\Core\setup();
+Photogramappy\Core\setup();

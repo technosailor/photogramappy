@@ -1,5 +1,5 @@
 <?php
-namespace TenUp\Photogramappy\Core;
+namespace Photogramappy\Core;
 
 /**
  * Default setup routine
