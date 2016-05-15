@@ -1,0 +1,27 @@
+{
+	"name": "photogramappy",
+	"description": "A photography and mapping plugin for WordPress",
+	"version": "0.1.0",
+	"type": "wordpress-plugin",
+	"keywords": [],
+	"homepage": "http://wordpress.org/plugins",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Aaron Brazell",
+			"email": "aaron@technosailor.com",
+		"homepage": "http://technosailor.com",
+			"role": "Developer"
+		}
+	],
+    "minimum-stability": "dev",
+	"require": {
+		"php": ">=5.6"
+	},
+    "require-dev": {
+	    "antecedent/patchwork": "1.2.*",
+        "phpunit/phpunit"     : "*@stable",
+	    "brianium/paratest"   : "dev-master",
+        "10up/wp_mock"        : "dev-master"
+    }
+}

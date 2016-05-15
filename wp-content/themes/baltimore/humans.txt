@@ -1,0 +1,21 @@
+/* TEAM */
+	Developer: Aaron Brazell
+	Contact:   aaron@technosailor.com
+	URI:       http://technosailor.com
+
+/* THANKS */
+	Template Design: 10up
+	URI:             http://10up.com
+	Twitter:         @10up
+	
+	Template Design: Eric Mann
+	URI:             https://eamann.com
+	Twitter:         @ericmann
+
+	Template Design: Luke Woodward
+	URI:             http://lkwdwrd.com
+	Twitter:         @lkwdwrd
+	
+/* SITE */
+	Created:  Fri May 13 2016
+	Template: https://github.com/10up/generator-wp-make
