@@ -97,3 +97,7 @@ wp-content/mysql.sql
 *.asf
 *.wmv
 *.avi
+node_modules/
+temp/
+.idea/
+.DS_Store
