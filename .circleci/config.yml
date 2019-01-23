@@ -34,5 +34,4 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
 
       # run tests!
-      - run: ./vendor/bin/codecept build
       - run: ./vendor/bin/codecept run --xml result.xml
