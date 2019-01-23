@@ -1,9 +1,0 @@
-{
-	"version": 3,
-	"file": "baltimore.css",
-	"sources": [
-		"sass/baltimore.scss"
-	],
-	"mappings": "AAAA;;;;;;GAMG;AAED,AAAA,IAAI,EAAE,AAAA,IAAI,CAAC;EAAE,MAAM,EAAE,IAAK;EAAE,MAAM,EAAE,CAAE;EAAE,OAAO,EAAE,CAAE,GAAI;;AACvD,AAAA,IAAI,CAAC;EAAE,MAAM,EAAE,IAAK,GAAI",
-	"names": []
-}
