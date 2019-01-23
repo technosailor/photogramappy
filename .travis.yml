@@ -30,8 +30,8 @@ addons:
 
       # I will need PHP in its FPM version, MySQL PHP extensions and Nginx
       # itself
-      - php72-fpm
-      - php72-mysql
+      - php7.2-fpm
+      - php7.2-mysqli
       - nginx
 
 env:
