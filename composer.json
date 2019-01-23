@@ -1,0 +1,22 @@
+
+{
+  "name": "technosailor/photogramappy",
+  "description":"WordPress plugin to allow location tagging of photographs. Requires PHP 7.2 and WordPress 4.9.9+",
+  "keywords":[
+    "photography",
+    "gis",
+    "mapping"
+  ],
+  "authors":[
+    {
+      "name":"Aaron Brazell",
+      "email":"aaron@technosailor.com",
+      "homepage":"http://github.com/technosailor"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "composer/installers": "v1.0.6",
+    "php": ">=7.2"
+  }
+}
