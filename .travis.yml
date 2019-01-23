@@ -1,0 +1,62 @@
+sudo: required
+
+language: php
+
+notifications:
+  email: false
+
+php:
+  - '7.2'
+  - nightly
+
+matrix:
+  fast_finish: true
+
+  allow_failures:
+    - php: nightly
+
+services:
+  - mysql
+
+cache:
+  apt: true
+  directories:
+    - vendor
+    - $HOME/.composer/cache/files
+
+addons:
+  apt:
+    packages:
+
+      # I will need PHP in its FPM version, MySQL PHP extensions and Nginx
+      # itself
+      - php7.2-fpm
+      - php7.2-mysqli
+      - nginx
+
+env:
+  global:
+    - SITE_URL="http://photo.test"
+    - SITE_DOMAIN="photo.test"
+    - DB_NAME="test"
+
+before_install:
+  - mysql -e "create database IF NOT EXISTS $DB_NAME;" -uroot
+
+install:
+  - composer install --prefer-dist
+
+  - sudo cp build/travis-nginx-conf /etc/nginx/sites-available/$SITE_DOMAIN
+
+  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$TRAVIS_BUILD_DIR?g" --in-place /etc/nginx/sites-available/$SITE_DOMAIN
+  - sudo sed -e "s?%SITE_DOMAIN%?$SITE_DOMAIN?g" --in-place /etc/nginx/sites-available/$SITE_DOMAIN
+
+  - sudo ln -s /etc/nginx/sites-available/$SITE_DOMAIN /etc/nginx/sites-enabled/
+
+before_script:
+
+  - sudo service php5-fpm restart
+  - sudo service nginx restart
+
+script:
+  - curl http://photo.test
