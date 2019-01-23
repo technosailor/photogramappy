@@ -17,7 +17,8 @@
   "require": {
     "composer/installers": "v1.0.6",
     "php": ">=7.2",
-    "pimple/pimple": "~3.0@dev"
+    "pimple/pimple": "~3.0@dev",
+    "php-di/php-di": "^6.0"
   },
   "require-dev": {
     "wp-cli/wp-cli": "^1.5.1",
@@ -25,5 +26,10 @@
     "phpunit/phpunit": "^6",
     "php-http/httplug": "^1.1",
     "codeception/codeception": "^2.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Technosailor\\Photogramappy\\":"wp-content/plugins/photogramappy/src"
+    }
   }
 }
