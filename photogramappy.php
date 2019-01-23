@@ -9,8 +9,9 @@ Author URI:  http://github.com/technosailor
 
 use Technosailor\Photogramappy\Init;
 
-require_once ABSPATH . '../vendor/autoload.php';
+define( 'BASE_PATH', plugin_dir_path( __FILE__ ) );
+require_once BASE_PATH . 'vendor/autoload.php';
 
-add_action( 'plugins_loaded', function() {
+add_action( 'plugins_loaded', function () {
 	Init::instance()->init();
 } );
