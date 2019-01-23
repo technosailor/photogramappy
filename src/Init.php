@@ -2,6 +2,7 @@
 namespace Technosailor\Photogramappy;
 
 use Technosailor\Photogramappy\Post_Types\Photographs;
+use Technosailor\Photogramappy\Settings\Settings;
 
 class Init {
 	protected static $_instance;
@@ -15,9 +16,21 @@ class Init {
 
 	public function register_providers() {
 		$this->providers[ Photographs::NAME ] = new Photographs();
+		$this->providers[ Settings::NAME ] = new Settings();
 
+		$this->photographs_cpt();
+		$this->admin_settings();
+	}
+
+	protected function photographs_cpt() {
 		add_action( 'init', function() {
 			$this->providers[ Photographs::NAME ]->register();
+		} );
+	}
+
+	protected function admin_settings() {
+		add_action( 'admin_menu', function() {
+			$this->providers[ Settings::NAME ]->menu_item();
 		} );
 	}
 
