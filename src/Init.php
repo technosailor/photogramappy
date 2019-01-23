@@ -1,7 +1,6 @@
 <?php
 namespace Technosailor\Photogramappy;
 
-
 use Technosailor\Photogramappy\Post_Types\Photographs;
 
 class Init {
