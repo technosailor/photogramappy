@@ -9,25 +9,20 @@ class Init {
 	}
 
 	public function register_containers() {
-		
+
 	}
 
 	/**
 	 * Singleton only allows the loading of the namespace once.
 	 *
-	 * @param null|\ArrayAccess $container
-	 *
 	 * @return Init
 	 * @throws \Exception
 	 */
-	public static function instance( $container = null ) {
+	public static function instance() {
 		if ( ! isset( self::$_instance ) ) {
-			if ( empty( $container ) ) {
-				throw new \Exception( 'You need to provide a Pimple container' );
-			}
 
 			$className       = __CLASS__;
-			self::$_instance = new $className( $container );
+			self::$_instance = new $className();
 		}
 
 		return self::$_instance;
