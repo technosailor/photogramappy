@@ -32,6 +32,10 @@ class Init {
 		add_action( 'admin_menu', function() {
 			$this->providers[ Settings::NAME ]->menu_item();
 		} );
+
+		add_action( 'admin_init', function() {
+			$this->providers[ Settings::NAME ]->save_settings();
+		} );
 	}
 
 	/**
