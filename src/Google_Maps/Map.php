@@ -4,7 +4,6 @@ namespace Technosailor\Photogramappy\Google_Maps;
 
 use Technosailor\Photogramappy\Object_Meta\Geo_Coordinate\Config\View;
 use Technosailor\Photogramappy\Settings\Settings;
-use WP_Post;
 
 class Map {
 
