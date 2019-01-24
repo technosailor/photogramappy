@@ -12,7 +12,7 @@ use MetaboxOrchestra\Boxes;
  * - BoxAction (This handles the submitted content)
  *
  * Your class should have the `register_meta()` method and inject a `Boxes` object into it.
- * 
+ *
  * @see Technosailor\Photogramappy\Object_Meta\Geo_Coordinate\Geo_Coordinate
  *
  * Interface MetaBox
