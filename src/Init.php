@@ -1,6 +1,9 @@
 <?php
 namespace Technosailor\Photogramappy;
 
+use MetaboxOrchestra\Bootstrap;
+use MetaboxOrchestra\Boxes;
+use Technosailor\Photogramappy\Object_Meta\Geo_Coordinate\Geo_Coordinate;
 use Technosailor\Photogramappy\Post_Types\Photographs;
 use Technosailor\Photogramappy\Settings\Settings;
 
@@ -10,6 +13,10 @@ class Init {
 
 	protected $providers = [];
 
+	public function __construct() {
+		Bootstrap::bootstrap();
+	}
+
 	public function init() {
 		$this->register_providers();
 	}
@@ -18,8 +25,15 @@ class Init {
 		$this->providers[ Photographs::NAME ] = new Photographs();
 		$this->providers[ Settings::NAME ] = new Settings();
 
+		$this->register_meta();
+
 		$this->photographs_cpt();
 		$this->admin_settings();
+		$this->meta();
+	}
+
+	protected function register_meta() {
+		$this->providers[ Geo_Coordinate::NAME ] = new Geo_Coordinate();
 	}
 
 	protected function photographs_cpt() {
@@ -35,6 +49,12 @@ class Init {
 
 		add_action( 'admin_init', function() {
 			$this->providers[ Settings::NAME ]->save_settings();
+		} );
+	}
+
+	protected function meta() {
+		add_action( Boxes::REGISTER_BOXES, function ( Boxes $boxes ) {
+			$this->providers[ Geo_Coordinate::NAME ]->register_meta( $boxes );
 		} );
 	}
 
