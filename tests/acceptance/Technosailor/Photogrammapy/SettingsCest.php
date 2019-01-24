@@ -20,7 +20,6 @@ class SettingsCest {
 
 		$I->amOnPluginsPage();
 		$I->activatePlugin( 'photogramappy');
-		$I->see( 'Plugins' );
 
 		$I->amOnAdminPage( 'options-general.php?page=photogrammapy' );
 		$I->fillField( '#pgmpy-googlemaps-key', 'abcdefg' );
