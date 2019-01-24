@@ -3,6 +3,7 @@ namespace Technosailor\Photogramappy;
 
 use MetaboxOrchestra\Bootstrap;
 use MetaboxOrchestra\Boxes;
+use Technosailor\Photogramappy\Google_Maps\Defaults;
 use Technosailor\Photogramappy\Google_Maps\Map;
 use Technosailor\Photogramappy\Object_Meta\Geo_Coordinate\Geo_Coordinate;
 use Technosailor\Photogramappy\Post_Types\Photographs;
@@ -25,7 +26,7 @@ class Init {
 	public function register_providers() {
 		$this->providers[ Photographs::NAME ] = new Photographs();
 		$this->providers[ Settings::NAME ] = new Settings();
-		$this->providers[ Map::NAME ] = new Map();
+		$this->providers[ Map::NAME ] = new Map( new Defaults() );
 
 		$this->register_meta();
 

@@ -1,5 +1,6 @@
 <?php
 
+use Technosailor\Photogramappy\Google_Maps\Defaults;
 use Technosailor\Photogramappy\Google_Maps\Map;
 use Technosailor\Photogramappy\Object_Meta\Geo_Coordinate\Config\View;
 use Technosailor\Photogramappy\Post_Types\Photographs;
@@ -22,7 +23,7 @@ class TechnosailorPhotogramappyGoogle_MapsMapTest extends \Codeception\TestCase\
 	}
 
 	public function test_google_maps_url_is_constructed_correctly() {
-		$map = new Map();
+		$map = new Map( new Defaults() );
 
 		$apikey = 'abcdef';
 		update_option( Settings::GOOGLE_APIKEY, $apikey );
@@ -43,15 +44,15 @@ class TechnosailorPhotogramappyGoogle_MapsMapTest extends \Codeception\TestCase\
 		$this->assertEquals( $expected, $url );
 
 		$expected = 'https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=640x640&markers=color%3Ablue%7Clabel%3AX%7C39.2891071%2C-76.599602&scale=2&key=abcdef';
-		$url      = $map->render( $post_id, 15 );
+		$url      = $map->render( $post_id, [ 'zoom' => 15 ] );
 		$this->assertEquals( $expected, $url );
 
 		$expected = 'https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=640x250&markers=color%3Ablue%7Clabel%3AX%7C39.2891071%2C-76.599602&scale=2&key=abcdef';
-		$url      = $map->render( $post_id, 15, 250 );
+		$url      = $map->render( $post_id, [ 'zoom' => 15, 'height' => 250 ] );
 		$this->assertEquals( $expected, $url );
 
 		$expected = 'https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x250&markers=color%3Ablue%7Clabel%3AX%7C39.2891071%2C-76.599602&scale=2&key=abcdef';
-		$url      = $map->render( $post_id, 15, 250, 400 );
+		$url      = $map->render( $post_id, [ 'zoom' => 15, 'height' => 250, 'width' => 400 ] );
 		$this->assertEquals( $expected, $url );
 	}
 

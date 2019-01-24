@@ -10,6 +10,12 @@ class Map {
 
 	const NAME = 'map';
 
+	private $params;
+
+	public function __construct( Defaults $defaults ) {
+		$this->params = $defaults;
+	}
+
 	/**
 	 * @param string $content
 	 *
@@ -29,20 +35,36 @@ class Map {
 	}
 
 	/**
-	 * Constructs Google Maps Static URL
-	 *
 	 * @param int $post_id
-	 * @param int $zoom
-	 * @param int $height
-	 * @param int $width
+	 * @param array $args
 	 *
-	 * @return bool
+	 * @return string
 	 */
-	public function render( int $post_id, int $zoom = 13, int $height = 640, int $width = 640 ) {
+	public function render( int $post_id, array $args = [] ) : string {
 
 		$key = get_option( Settings::GOOGLE_APIKEY );
 		if ( empty( $key ) ) {
-			return false;
+			return '';
+		}
+
+		if( ! empty( $args ) ) {
+			$args = array_map( 'absint', $args );
+		}
+
+		foreach( $args as $key => $arg ) {
+			switch( $key ) {
+				case 'zoom' :
+					$this->params->setZoom( $args['zoom'] );
+					break;
+				case 'height' :
+					$this->params->setHeight( $args['height'] );
+					break;
+				case 'width' :
+					$this->params->setWidth( $args['width'] );
+					break;
+				default :
+					break;
+			}
 		}
 
 		$marker = sprintf( 'color:blue|label:X|%s,%s',
@@ -52,8 +74,8 @@ class Map {
 
 		$url = 'https://maps.googleapis.com/maps/api/staticmap';
 		$url = add_query_arg( [
-			'zoom'    => $zoom,
-			'size'    => $width . 'x' . $height,
+			'zoom'    => $this->params->getZoom(),
+			'size'    => $this->params->getWidth() . 'x' . $this->params->getHeight(),
 			'markers' => urlencode( $marker ),
 			'scale'   => 2,
 			'key'     => get_option( Settings::GOOGLE_APIKEY ),
