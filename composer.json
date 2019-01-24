@@ -25,7 +25,9 @@
     "lucatume/function-mocker": "~1.0",
     "phpunit/phpunit": "^6",
     "php-http/httplug": "^1.1",
-    "codeception/codeception": "^2.5"
+    "codeception/codeception": "^2.5",
+    "vlucas/phpdotenv": "^2.5",
+    "lucatume/wp-browser": "^2.2."
   },
   "autoload": {
     "psr-4": {
