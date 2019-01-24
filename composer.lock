@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3316ea3c13ea423ecb9955e2dcf55658",
+    "content-hash": "0c7c447923fca90fcddcfef36d197355",
     "packages": [
+        {
+            "name": "brain/nonces",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Brain-WP/Nonces.git",
+                "reference": "c800c04e2d563ebc137b7d2a441206cca3dc82d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Brain-WP/Nonces/zipball/c800c04e2d563ebc137b7d2a441206cca3dc82d3",
+                "reference": "c800c04e2d563ebc137b7d2a441206cca3dc82d3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "brain/monkey": "~1.4",
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Brain\\Nonces\\": "src/"
+                },
+                "files": [
+                    "inc/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Giuseppe Mazzapica",
+                    "email": "giuseppe.mazzapica@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OOP package for WordPress to deal with nonces.",
+            "keywords": [
+                "nonce",
+                "security",
+                "wordpress",
+                "wordpress nonce"
+            ],
+            "time": "2016-11-17T13:04:21+00:00"
+        },
         {
             "name": "composer/installers",
             "version": "v1.0.6",
@@ -78,6 +128,65 @@
                 "zend"
             ],
             "time": "2013-08-20T04:37:09+00:00"
+        },
+        {
+            "name": "inpsyde/metabox-orchestra",
+            "version": "0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inpsyde/MetaboxOrchestra.git",
+                "reference": "a17ce123c4aabc520f850091abf14f099549cc60"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inpsyde/MetaboxOrchestra/zipball/a17ce123c4aabc520f850091abf14f099549cc60",
+                "reference": "a17ce123c4aabc520f850091abf14f099549cc60",
+                "shasum": ""
+            },
+            "require": {
+                "brain/nonces": "1.0.*",
+                "php": ">=7"
+            },
+            "require-dev": {
+                "brain/monkey": "^2",
+                "doctrine/instantiator": "~1.0.5",
+                "phpunit/phpunit": "6.3.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MetaboxOrchestra\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Inpsyde GmbH",
+                    "email": "hello@inpsyde.com",
+                    "homepage": "http://inpsyde.com",
+                    "role": "Company"
+                },
+                {
+                    "name": "Giuseppe Mazzapica",
+                    "email": "g.mazzapica@inpsyde.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Christian Brückner",
+                    "email": "c.brueckner@inpsyde.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Package for OOP WordPress metabox orchestration.",
+            "time": "2017-11-28T12:25:00+00:00"
         },
         {
             "name": "jeremeamia/SuperClosure",
