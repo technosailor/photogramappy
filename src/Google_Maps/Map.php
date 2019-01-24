@@ -55,8 +55,8 @@ class Map {
 			'zoom'    => $zoom,
 			'size'    => $width . 'x' . $height,
 			'markers' => urlencode( $marker ),
-			'key'     => get_option( Settings::GOOGLE_APIKEY ),
 			'scale'   => 2,
+			'key'     => get_option( Settings::GOOGLE_APIKEY ),
 		], $url );
 
 		return $url;
