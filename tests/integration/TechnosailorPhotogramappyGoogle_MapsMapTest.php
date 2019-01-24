@@ -39,8 +39,19 @@ class TechnosailorPhotogramappyGoogle_MapsMapTest extends \Codeception\TestCase\
 		] );
 
 		$expected = 'https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=640x640&markers=color%3Ablue%7Clabel%3AX%7C39.2891071%2C-76.599602&scale=2&key=abcdef';
-
 		$url      = $map->render( $post_id );
+		$this->assertEquals( $expected, $url );
+
+		$expected = 'https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=640x640&markers=color%3Ablue%7Clabel%3AX%7C39.2891071%2C-76.599602&scale=2&key=abcdef';
+		$url      = $map->render( $post_id, 15 );
+		$this->assertEquals( $expected, $url );
+
+		$expected = 'https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=640x250&markers=color%3Ablue%7Clabel%3AX%7C39.2891071%2C-76.599602&scale=2&key=abcdef';
+		$url      = $map->render( $post_id, 15, 250 );
+		$this->assertEquals( $expected, $url );
+
+		$expected = 'https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x250&markers=color%3Ablue%7Clabel%3AX%7C39.2891071%2C-76.599602&scale=2&key=abcdef';
+		$url      = $map->render( $post_id, 15, 250, 400 );
 		$this->assertEquals( $expected, $url );
 	}
 
