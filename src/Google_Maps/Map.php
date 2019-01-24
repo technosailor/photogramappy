@@ -17,6 +17,8 @@ class Map {
 	}
 
 	/**
+	 * Conditionally appends a google maps to the bottom of the_content
+	 *
 	 * @param string $content
 	 *
 	 * @filter the_content
@@ -35,6 +37,8 @@ class Map {
 	}
 
 	/**
+	 * Constructs a Google Maps Static URL
+	 *
 	 * @param int $post_id
 	 * @param array $args
 	 *
