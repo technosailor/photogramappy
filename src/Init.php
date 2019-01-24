@@ -3,6 +3,7 @@ namespace Technosailor\Photogramappy;
 
 use MetaboxOrchestra\Bootstrap;
 use MetaboxOrchestra\Boxes;
+use Technosailor\Photogramappy\Google_Maps\Map;
 use Technosailor\Photogramappy\Object_Meta\Geo_Coordinate\Geo_Coordinate;
 use Technosailor\Photogramappy\Post_Types\Photographs;
 use Technosailor\Photogramappy\Settings\Settings;
@@ -24,12 +25,14 @@ class Init {
 	public function register_providers() {
 		$this->providers[ Photographs::NAME ] = new Photographs();
 		$this->providers[ Settings::NAME ] = new Settings();
+		$this->providers[ Map::NAME ] = new Map();
 
 		$this->register_meta();
 
 		$this->photographs_cpt();
 		$this->admin_settings();
 		$this->meta();
+		$this->map();
 	}
 
 	protected function register_meta() {
@@ -55,6 +58,12 @@ class Init {
 	protected function meta() {
 		add_action( Boxes::REGISTER_BOXES, function ( Boxes $boxes ) {
 			$this->providers[ Geo_Coordinate::NAME ]->register_meta( $boxes );
+		} );
+	}
+
+	protected function map() {
+		add_filter( 'the_content', function( string $content ) {
+			return $this->providers[ Map::NAME ]->maybe_add_map_to_post_content( $content );
 		} );
 	}
 
