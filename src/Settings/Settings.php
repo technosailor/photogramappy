@@ -24,7 +24,7 @@ class Settings {
 	 *
 	 */
 	public function settings() {
-	    $apikey = $this->get_api_key();
+	    $apikey = get_option( self::GOOGLE_APIKEY );
 
 		?>
 		<div class="wrap">
@@ -58,12 +58,10 @@ class Settings {
 	/**
 	 * @return string
 	 */
-	private function get_api_key() : string {
+	public function get_api_key( string $apikey ) : string {
 		if( defined( 'GMAPS_APIKEY' ) ) {
 			$apikey = GMAPS_APIKEY;
 			$this->disabled_api_field = 'disabled';
-		} else {
-			$apikey = get_option( self::GOOGLE_APIKEY );
 		}
 
 		return $apikey;

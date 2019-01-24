@@ -54,6 +54,10 @@ class Init {
 		add_action( 'admin_init', function() {
 			$this->providers[ Settings::NAME ]->save_settings();
 		} );
+
+		add_filter( 'pre_option_' . Settings::GOOGLE_APIKEY, function( string $value ) {
+			return $this->providers[ Settings::NAME ]->get_api_key( $value );
+		} );
 	}
 
 	protected function meta() {
