@@ -1,6 +1,6 @@
 # Photogramappy
 
-This plugin is something I have built to demonstrate the use of advanced, modern PHP in a WordPress context. It is fairly simple for practical use reasons. It creates a custom post type - `Photographs` - and adds meta for latitude and longitude using the <a href="https://packagist.org/packages/inpsyde/metabox-orchestra">Metabox Orchestra</a> library, add taps into the Google Maps API for rendering maps _below_ post content.
+This plugin is something I have built to demonstrate the use of advanced, modern PHP in a WordPress context. It is fairly simple for practical use reasons. It creates a custom post type - `Photographs` - and adds meta for latitude and longitude using the <a href="https://packagist.org/packages/inpsyde/metabox-orchestra">Metabox Orchestra</a> library, and it taps into the Google Maps API for rendering maps _below_ post content.
 
 ## Requirements
 - PHP 7.2
