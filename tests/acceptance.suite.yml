@@ -26,7 +26,7 @@ modules:
             password: %DB_PASSWORD%
             dump: tests/_data/dump.sql
             populate: true
-            cleanup: false
+            cleanup: true
             url: '%WP_URL%'
             tablePrefix: %TABLE_PREFIX%
             urlReplacement: false
