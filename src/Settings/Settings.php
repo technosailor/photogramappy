@@ -11,6 +11,8 @@ class Settings {
 	const NONCE = 'pgmpy-settings';
 	const GOOGLE_APIKEY = 'pgmpy-googlemaps-apikey';
 
+	protected $disabled_api_field = false;
+
 	/**
 	 * @action admin_menu
 	 */
@@ -22,13 +24,7 @@ class Settings {
 	 *
 	 */
 	public function settings() {
-	    $disabled = false;
-	    if( defined( 'GMAPS_APIKEY' ) ) {
-	        $apikey = GMAPS_APIKEY;
-	        $disabled = 'disabled';
-        } else {
-	        $apikey = get_option( self::GOOGLE_APIKEY );
-        }
+	    $apikey = $this->get_api_key();
 
 		?>
 		<div class="wrap">
@@ -42,13 +38,13 @@ class Settings {
 						<tr>
 							<th scope="row"><?php _e( 'Google Maps API key', 'photogrammapy' ) ?></th>
 							<td>
-								<input id="pgmpy-googlemaps-key" name="<?php echo self::GOOGLE_APIKEY ?>" class="regular-text" type="text" value="<?php echo esc_attr( $apikey ); ?>" <?php echo esc_attr( $disabled ) ?>>
+								<input id="pgmpy-googlemaps-key" name="<?php echo self::GOOGLE_APIKEY ?>" class="regular-text" type="text" value="<?php echo esc_attr( $apikey ); ?>" <?php echo esc_attr( $this->disabled_api_field ) ?>>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<?php
-                if ( empty ( $disabled ) ) {
+                if ( empty ( $this->disabled_api_field ) ) {
 	                submit_button();
                 } else {
                     echo sprintf( '<p class="description">%s</p>', __( 'Your Google API Key has been set in your <code>wp-config.php</code> file and cannot be updated here.', 'photogramappy' ) );
@@ -58,6 +54,20 @@ class Settings {
 		</div>
 		<?php
 	}
+
+	/**
+	 * @return string
+	 */
+	private function get_api_key() : string {
+		if( defined( 'GMAPS_APIKEY' ) ) {
+			$apikey = GMAPS_APIKEY;
+			$this->disabled_api_field = 'disabled';
+		} else {
+			$apikey = get_option( self::GOOGLE_APIKEY );
+		}
+
+		return $apikey;
+    }
 
 	/**
 	 * @action admin_init
