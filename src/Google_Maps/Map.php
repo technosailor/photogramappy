@@ -3,6 +3,7 @@
 namespace Technosailor\Photogramappy\Google_Maps;
 
 use Technosailor\Photogramappy\Object_Meta\Geo_Coordinate\Config\View;
+use Technosailor\Photogramappy\Post_Types\Photographs;
 use Technosailor\Photogramappy\Settings\Settings;
 
 class Map {
@@ -25,6 +26,20 @@ class Map {
 	 * @return string
 	 */
 	public function maybe_add_map_to_post_content( string $content ): string {
+
+		if( get_post_type( get_the_ID() ) !== Photographs::NAME ) {
+			return $content;
+		}
+
+		$latitude = get_post_meta( get_the_ID(), View::FIELD_LAT, true );
+		if( empty( $latitude ) ) {
+			return $content;
+		}
+
+		$longitude = get_post_meta( get_the_ID(), View::FIELD_LONG, true );
+		if( empty( $longitude ) ) {
+			return $content;
+		}
 
 		$map_url = $this->render( get_the_ID() );
 		if( ! empty( $map_url ) ) {
